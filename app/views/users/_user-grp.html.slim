@@ -1,0 +1,25 @@
+- unless user.user_groups.empty?
+  - user.user_groups.each do |grp|
+    - if grp.id == 1
+      .btn-group.user-grp
+        button.btn.btn-mini.btn-danger = grp.group_name
+        = link_to delgroup_user_path(user, :grp => grp), :class => 'btn btn-mini btn-danger' do
+          i.icon.icon-remove.icon-white
+    - else
+      - if grp.id == 2
+        .btn-group.user-grp
+          span.btn.btn-mini.btn-info = grp.group_name
+          = link_to delgroup_user_path(user, :grp => grp), :class => 'btn btn-mini btn-info' do
+            i.icon.icon-remove.icon-white
+      - else
+        .btn-group.user-grp
+          span.btn.btn-mini = grp.group_name
+          = link_to delgroup_user_path(user, :grp => grp), :class => 'btn btn-mini' do
+            i.icon.icon-remove
+- else
+  .dropdown
+    a.btn.btn-mini.dropdown-toggle{data-toggle="dropdown" href="#" style="font-weight: bold" } +
+    ul.dropdown-menu{role="menu"}
+      - @users_grp.each do |grp|
+        li
+          = link_to grp.group_name, addgroup_user_path(user, :grp => grp)

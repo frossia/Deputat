@@ -1,0 +1,12 @@
+ul.dropdown-menu
+  li.dropdown-submenu.pull-left
+    a{tabindex="-1"} Добавить в группу
+    ul.dropdown-menu.pull-left
+      - @users_grp.each do |grp|
+        li
+          = link_to grp.group_name, addgroup_user_path(user, :grp => grp)
+          /= link_to grp.group_name, :controller => "users", :action => "add_user_to_group", :user => user, :user_group => grp
+  li
+    a href="#" Забанить
+  li
+    a href="#" Сообщение

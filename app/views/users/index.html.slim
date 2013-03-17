@@ -1,0 +1,38 @@
+.span4
+  h2
+    span.icon-groups-friends{ style="font-size: 30px; margin: 11px 0 0 0;" }
+    span  Пользователи
+
+.span8
+  .text-right{ style="margin: 13px 0 0 0" }
+    = link_to new_user_path, :class => "btn" do
+      i.icon-addfriend
+      span  Новый пользователь
+
+
+.span12
+  table.table.table-striped
+    - for user in @users do
+      tr.user_row
+        td
+          h4.user-id.muted.text-center = user.id
+        td
+          div
+            span.user_lastname = user.last_name
+            span.user_name = full_username(user.first_name,user.middle_name)
+          div
+            small.muted = user.u_email
+        td.user_grp
+          = render :partial => "user-grp", :locals => { :user => user }
+
+        /= link_to grp.group_name, add_user_to_group
+
+        td.td-user-actions
+          .btn-group.user-actions
+            = link_to user_path(user), :class => 'btn' do
+              i.icon.icon-user
+            = link_to user, method: :delete, data: { confirm: "Удалить?" }, :class => "btn" do
+              i.icon.icon-trash
+            a.btn data-toggle="dropdown"
+              span.caret
+            = render :partial => "user_menu", :locals => { :user => user }

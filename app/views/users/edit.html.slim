@@ -1,0 +1,11 @@
+br
+.well
+  = form_for @user do |user|
+    legend Реадактирование пользователя
+    = render :partial => "user_form", :locals => { :user => user }
+    hr
+    .text-center
+      .btn-group
+        /button.btn{action="index"} << Назад
+        = link_to "<< Назад", {:action => "index"}, :class => "btn btn-small"
+        = user.submit "Обновить", :class => "btn btn-small"

@@ -1,0 +1,24 @@
+.row
+  h4 Пользователь: #{@user.last_name.upcase} #{@user.middle_name} #{@user.first_name}
+
+.row
+  .well
+    dl.dl-horizontal
+      dt Логин:
+      dd = @user.u_login
+      dt E-Mail:
+      dd = @user.u_email
+      dt Создан:
+      dd = @user.created_at
+      dt Обновлен:
+      dd = @user.updated_at
+
+      dt Состоит в группах:
+      dd
+        = render :partial => "user-grp", :locals => { :user => @user }
+
+    hr
+    .text-center
+      .btn-group.test-btns
+        = link_to "<< Назад", {:action => "index"}, :class => "btn btn-small"
+        = link_to "Редактировать", edit_user_path, :class => "btn btn-small"

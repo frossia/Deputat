@@ -1,0 +1,89 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ //*= require_tree .
+ */
+
+//@import "bootstrap/reset";
+//@import "bootstrap/layouts";
+//@import "bootstrap/variables";
+//@import "bootstrap/media";
+//@import "bootstrap/mixins";
+//@import "bootstrap/buttons";
+//@import "bootstrap/tables";
+//@import "bootstrap/component-animations";
+@import "bootstrap/responsive";
+//@import "bootstrap/responsive-utilities";
+//@import "bootstrap/responsive-767px-max";
+//@import "bootstrap/grid";
+@import "bootstrap";
+@import "bourbon";
+
+
+body {
+  background-image: image-url("creampaper.png");
+}
+
+.btn {
+  @include box-shadow(0 1px 3px 0px hsla(0, 50%, 0%, 0.45));
+  //margin: 0 2px;
+}
+
+.btn:hover {
+  @include animation(scale 1.0s ease-in, slide 2.0s ease);
+}
+
+a > i {
+  padding: 0 4px;
+}
+
+.tst {}
+
+.user_lastname {
+  text-transform: uppercase;
+  margin: 0 5px 0 0;
+  font-weight: bold;
+}
+
+.user-id {
+  font-weight: normal;
+  //color: grey;
+}
+
+.table-striped tbody > tr:nth-child(odd) > td, .table-striped tbody > tr:nth-child(odd) > th {
+  background-color: rgba(249, 249, 249, 0.3);
+}
+
+tr.user_row .user-actions{
+  visibility: hidden;
+}
+
+td.td-user-actions div {
+  float: right;
+}
+
+
+tr.user_row:hover .user-actions{
+  visibility: visible;
+}
+
+
+tr.user_row:hover .del_user {
+  @extend .icon-trash;
+}
+
+[class*="span"] {
+  margin: 0;
+}
+
+.user-grp {
+  margin: 5px 5px 0 5px;
+}
