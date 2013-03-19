@@ -4,10 +4,11 @@
 .row
   .well
     dl.dl-horizontal
-      dt Логин:
-      dd = @user.u_login
       dt E-Mail:
-      dd = @user.u_email
+      - if @user
+        dd = @user.email
+      - else
+        dd Нету
       dt Создан:
       dd = @user.created_at
       dt Обновлен:

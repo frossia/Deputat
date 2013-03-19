@@ -4,7 +4,7 @@
       .btn-group.user-grp
         button.btn.btn-mini.btn-danger = grp.group_name
         = link_to delgroup_user_path(user, :grp => grp), :class => 'btn btn-mini btn-danger' do
-          i.icon.icon-remove.icon-white
+          i.icon-remove
     - else
       - if grp.id == 2
         .btn-group.user-grp
@@ -18,7 +18,8 @@
             i.icon.icon-remove
 - else
   .dropdown
-    a.btn.btn-mini.dropdown-toggle{data-toggle="dropdown" href="#" style="font-weight: bold" } +
+    a.btn.btn-mini.dropdown-toggle{data-toggle="dropdown" href="#" style="font-weight: bold" }
+      i.icon-plus
     ul.dropdown-menu{role="menu"}
       - @users_grp.each do |grp|
         li

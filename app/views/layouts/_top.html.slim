@@ -1,0 +1,23 @@
+.row.text-right
+  .span12
+    div style="padding: 5px 0 0 0"
+      - if user_signed_in?
+        small
+          span.muted Пользователь:
+          '
+          - if is_admin(current_user)
+            =' link_to current_user.last_name.upcase + ' ' + current_user.first_name, current_user, :style => 'color:red'
+          - else
+            =' link_to current_user.last_name.upcase + ' ' + current_user.first_name, current_user
+          span.muted |
+          '
+          = link_to('Выйти', destroy_user_session_path, :method => :delete)
+
+
+      - else
+        small
+          span
+            =' link_to "Зарегистрироваться", new_user_registration_path
+            ' или
+            = link_to('Войти', new_user_session_path)
+

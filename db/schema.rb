@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130315133451) do
+ActiveRecord::Schema.define(:version => 20130318212111) do
+
+  create_table "blogs", :force => true do |t|
+    t.string  "blog_name", :default => "",    :null => false
+    t.boolean "is_public", :default => false, :null => false
+    t.integer "user_id"
+  end
 
   create_table "products", :force => true do |t|
     t.decimal  "name"
@@ -36,13 +42,22 @@ ActiveRecord::Schema.define(:version => 20130315133451) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "u_login",     :null => false
-    t.string   "u_email",     :null => false
-    t.string   "last_name",   :null => false
+    t.string   "last_name",                              :null => false
     t.string   "middle_name"
-    t.string   "first_name",  :null => false
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "first_name",                             :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.text     "about_dep"
   end
 
 end

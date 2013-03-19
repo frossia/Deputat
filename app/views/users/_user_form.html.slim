@@ -1,10 +1,17 @@
-label for="user_u_login" Логин:
-= user.text_field :u_login
-label for="user_u_email" E-Mail:
-= user.text_field :u_email
+label for="user_email" E-Mail:
+= user.text_field :email
+label for="user_email" Password:
+= user.password_field :password
+label for="user_email" Confirm password:
+= user.password_field :password_confirmation
 label for="user_first_name" Имя:
 = user.text_field :first_name
 label for="user_middle_name" Отчество:
 = user.text_field :middle_name
 label for="user_last_name" Фамилия:
 = user.text_field :last_name
+/ - if user_signed_in? && is_admin(current_user)
+  / label for="user_about_dep" О себе:
+  / = user.text_area :about_dep, :size => "100x4"
+
+

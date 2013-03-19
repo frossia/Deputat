@@ -1,9 +1,15 @@
 Deputat::Application.routes.draw do
 
+  devise_for :users do
+    get 'users', :to => 'users#index', :as => :user_root
+  end
+
   resources :users do
     get :addgroup, on: :member
     get :delgroup, on: :member
   end
+
+  root :to => 'users#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -53,7 +59,7 @@ Deputat::Application.routes.draw do
   #   end
 
   # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
+  # just remember to delete public/index.html~.
   # root :to => 'welcome#index'
 
   # See how all your routes lay out with "rake routes"

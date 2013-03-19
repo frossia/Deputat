@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @users_grp = UserGroup.all
+    @blogs = Blog.all
   end
 
   def show
@@ -25,6 +26,7 @@ class UsersController < ApplicationController
     if @user.errors.empty?
       redirect_to users_path(@user)
     else
+      @err = @user.errors
       render "new"
     end
   end
@@ -48,7 +50,7 @@ class UsersController < ApplicationController
   def addgroup
     @user = User.find(params[:id])
     @user.user_groups << UserGroup.find(params[:grp])
-    redirect_to action: 'index'
+    redirect_to :back
   end
 
   def delgroup
